@@ -5,15 +5,19 @@ using System.Linq;
 using System.IO;
 using System;
 using SpecflowSelenium.Drivers;
+using SpecflowSelenium.Relatorio;
+using log4net;
 
-namespace SpecflowSelenium.Setup
+namespace SpecflowSelenium
 {
     public class BaseTest
     {
-
+        private static readonly ILog _log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected string FilePath { get; private set; }
 
         private string _nomeDoTesteCorrente;
+
+        private string _screenshotsPasta;
 
         public IWebDriver _driver { get; set; }
 
@@ -32,12 +36,24 @@ namespace SpecflowSelenium.Setup
         [SetUp]
         public void Setup()
         {
+            _screenshotsPasta = Configuration["appsettings:PastaScreenshots"];
+
+            ExtentTestManager.CreateParentTest(GetType().Namespace + "--->" + GetType().Name);
+
+            ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
+
             InicializarDriver();
         }
 
         [TearDown]
         public virtual void Cleanup()
         {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+
+            var resultadosTeste = new ResultadosTeste();
+
+            resultadosTeste.Resultados(_driver, status, _log, _screenshotsPasta, _nomeDoTesteCorrente);
+
             EncerrarDriver();
         }
 

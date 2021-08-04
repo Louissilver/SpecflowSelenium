@@ -1,10 +1,10 @@
-﻿Feature: NonChromeBrowser
+﻿Funcionalidade: NonChromeBrowser
 	Testing non chrome browsers
 
 @ToDoApp
-Scenario: Add items to the ToDoApp - Firefox
-	Given I select the first item
-	And I select the second item
-	And I enter the new value in textbox
-	When I click the Submit button
-	Then I verify wheter the item is added to the list
+Cenário: Add items to the ToDoApp - Firefox
+	Dado I select the first item
+	E I select the second item
+	E I enter the new value in textbox
+	Quando I click the Submit button
+	Então I verify wheter the item is added to the list

@@ -1,0 +1,14 @@
+{
+  "bindingCulture": {
+    "language": "pt-BR"
+  },
+
+  "language": {
+    "feature": "pt-BR"
+  },
+
+  "livingDocGenerator": {
+    "enabled": true,
+    "filePath": "TestExecution.json"
+  }
+}
