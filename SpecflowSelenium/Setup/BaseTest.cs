@@ -77,6 +77,8 @@ namespace SpecflowSelenium
 
             _driver.Navigate().GoToUrl(url);
 
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+
 
             FilePath = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\Arquivos"));
 

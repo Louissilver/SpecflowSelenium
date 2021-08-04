@@ -54,7 +54,7 @@ namespace SpecflowSelenium.Drivers
                     break;
             }
 
-            ExtentTestManager.GetTest().Log(logstatus, "Teste finalizado com " + logstatus + stacktrace);
+            //ExtentTestManager.GetTest().Log(logstatus, "Teste finalizado com " + logstatus + stacktrace);
         }
 
         private void LogErro(ILog log)
